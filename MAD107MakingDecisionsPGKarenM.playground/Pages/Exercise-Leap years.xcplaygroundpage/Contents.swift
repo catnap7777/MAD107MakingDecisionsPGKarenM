@@ -32,17 +32,53 @@ func isLeapYear(_ year: Int) -> Bool {
     }
 }
 
+//.. rewritten using guard statements
+func isLeapYear2(_ year: Int) -> Bool {
+    
+    if number(year, isDivisibleBy: 4) {
+        
+        //.. is it divisible by 100?  If not, then it's a leap year
+        guard year % 100 == 0 else {
+            return true
+        }
+        
+        //.. if it was divisible by 100, is it also divisible by 400? If not, then it's not a leap year
+        guard year % 400 == 0 else {
+            return false
+        }
+        
+        //.. if divisible by 4... and if divisible by 100... and divisible by 400, then it's a leap year
+        return true
+        
+    } else {
+        //.. if not divisible by 4
+        return false
+    }
+}
+
 // Should be true
-isLeapYear(2000)
+var value1a = isLeapYear(2000)
+var value1b = isLeapYear2(2000)
+print("func isLeapYear1 with \"if stmts\" = \(value1a)")
+print("func isLeapYear2 with \"guard stmts\" = \(value1b)\n")
 
 // Should be false
-isLeapYear(1900)
+var value2a = isLeapYear(1900)
+var value2b = isLeapYear2(1900)
+print("func isLeapYear1 with \"if stmts\"= \(value2a)")
+print("func isLeapYear2 with \"guard stmts\" = \(value2b)\n")
 
 // Should be true
-isLeapYear(2012)
+var value3a = isLeapYear(2012)
+var value3b = isLeapYear2(2012)
+print("func isLeapYear1 with \"if stmts\"= \(value3a)")
+print("func isLeapYear2 with \"guard stmts\" = \(value3b)\n")
 
 // Should be false
-isLeapYear(2017)
+var value4a = isLeapYear(2017)
+var value4b = isLeapYear2(2017)
+print("func isLeapYear1 with \"if stmts\"= \(value4a)")
+print("func isLeapYear2 with \"guard stmts\" = \(value4b)\n")
 
 
 //: - callout(Exercise): Complete the function above so that the rules are all followed and the examples get the correct answers.
